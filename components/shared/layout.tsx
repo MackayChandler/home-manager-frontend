@@ -1,37 +1,29 @@
 import {
+  AppBar,
+  Container,
   Drawer,
   IconButton,
   MenuItem,
   Stack,
   SwipeableDrawer,
   Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
+import BottomAppBar from "../bottom-app-bar";
+import SideDrawer from "../side-drawer";
 
 export default function Layout({ children }: any) {
-  const [openDrawer, setOpenDrawer] = useState(false);
-  const toggleDrawer = () => {
-    setOpenDrawer(!openDrawer);
-  };
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
+
+
   return (
     <Stack>
-      <Toolbar sx={{ justifyContent: "flex-end" }}>
-        <IconButton onClick={toggleDrawer}>
-          <MenuIcon />
-        </IconButton>
-      </Toolbar>
-      <SwipeableDrawer
-        anchor="top"
-        open={openDrawer}
-        onClose={toggleDrawer}
-        onOpen={toggleDrawer}
-      >
-        <MenuItem>Test</MenuItem>
-        <MenuItem>Test1</MenuItem>
-        <MenuItem>Test2</MenuItem>
-      </SwipeableDrawer>
+      {sm ? <BottomAppBar /> : <SideDrawer />}
       <div>{children}</div>
     </Stack>
   );
