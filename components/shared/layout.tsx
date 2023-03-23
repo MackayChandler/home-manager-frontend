@@ -1,21 +1,13 @@
 import {
-  AppBar,
-  Container,
-  Drawer,
   Grid,
-  IconButton,
-  MenuItem,
-  Stack,
-  SwipeableDrawer,
   Toolbar,
-  Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import * as React from "react";
-import { useState, useEffect } from "react";
 import BottomAppBar from "../navigation/bottom-app-bar";
 import SideDrawer from "../navigation/side-drawer";
+import Image from "next/image";
 
 export default function Layout({ children }: any) {
   const theme = useTheme();
@@ -25,8 +17,8 @@ export default function Layout({ children }: any) {
     <Grid container>
       <Grid item xs={12} sm={2}>
         {sm ? (
-          <Toolbar sx={{ backgroundColor: "blue", color: "white" }}>
-            <Typography>Home Manager</Typography>
+          <Toolbar sx={{ backgroundColor: "#27b7de", color: "black" }}>
+            <Image src={'/logo.png'} alt="logo" width={200} height={75}/>
           </Toolbar>
         ) : (
           <SideDrawer />
