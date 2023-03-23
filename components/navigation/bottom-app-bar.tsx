@@ -4,6 +4,7 @@ import {
   IconButton,
   SwipeableDrawer,
   MenuItem,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
@@ -28,9 +29,9 @@ export default function BottomAppBar() {
             </IconButton>
           </Link>
           <Link href="/chores">
-          <IconButton>
-            <CleaningServicesIcon sx={{ color: "white" }} />
-          </IconButton>
+            <IconButton>
+              <CleaningServicesIcon sx={{ color: "white" }} />
+            </IconButton>
           </Link>
           <IconButton>
             <FoodBankIcon sx={{ color: "white" }} />

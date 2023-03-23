@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import BottomAppBar from "../bottom-app-bar";
-import SideDrawer from "../side-drawer";
+import BottomAppBar from "../navigation/bottom-app-bar";
+import SideDrawer from "../navigation/side-drawer";
 
 export default function Layout({ children }: any) {
   const theme = useTheme();
@@ -23,12 +23,23 @@ export default function Layout({ children }: any) {
 
   return (
     <Grid container>
-      <Grid item xs={0} sm={2}>
-        {sm ? <BottomAppBar /> : <SideDrawer />}
+      <Grid item xs={12} sm={2}>
+        {sm ? (
+          <Toolbar sx={{ backgroundColor: "blue", color: "white" }}>
+            <Typography>Home Manager</Typography>
+          </Toolbar>
+        ) : (
+          <SideDrawer />
+        )}
       </Grid>
       <Grid item xs={12} sm={10}>
         {children}
       </Grid>
+      {sm && (
+        <Grid item xs={12}>
+          <BottomAppBar />
+        </Grid>
+      )}
     </Grid>
   );
 }

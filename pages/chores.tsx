@@ -1,9 +1,15 @@
-import { Typography } from '@mui/material';
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { Container, Typography } from "@mui/material";
+import * as React from "react";
+import { useState, useEffect } from "react";
+import RoomList from "../components/chores/room-list";
 
 export default function Chores() {
-    return (
-        <Typography variant='h4'>Chore Tracker</Typography>
-    )
+  return (
+    <Container>
+      <Typography variant="h4" textAlign={"center"}>
+        Chore Tracker
+      </Typography>
+      <RoomList />
+    </Container>
+  );
 }
