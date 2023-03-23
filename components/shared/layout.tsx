@@ -2,6 +2,7 @@ import {
   AppBar,
   Container,
   Drawer,
+  Grid,
   IconButton,
   MenuItem,
   Stack,
@@ -20,11 +21,14 @@ export default function Layout({ children }: any) {
   const theme = useTheme();
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
 
-
   return (
-    <Stack>
-      {sm ? <BottomAppBar /> : <SideDrawer />}
-      <div>{children}</div>
-    </Stack>
+    <Grid container>
+      <Grid item xs={0} sm={2}>
+        {sm ? <BottomAppBar /> : <SideDrawer />}
+      </Grid>
+      <Grid item xs={12} sm={10}>
+        {children}
+      </Grid>
+    </Grid>
   );
 }

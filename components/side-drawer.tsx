@@ -9,7 +9,9 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Slide,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import Link from "next/link";
 import * as React from "react";
@@ -20,47 +22,47 @@ import FoodBankIcon from "@mui/icons-material/FoodBank";
 import HomeIcon from "@mui/icons-material/Home";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import DrawerNavItem from "./drawer-navigation";
+import "animate.css";
+import Home from "../pages";
 
 export default function SideDrawer() {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const containerRef = React.useRef(null);
   return (
-    <Container>
-      {open ? (
-        <Drawer
-          variant="persistent"
-          anchor="left"
-          open={open}
-          sx={{
-            width: "10%",
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              width: "10%",
-              boxSizing: "border-box",
-            },
-          }}
-        >
-          <Toolbar sx={{ justifyContent: "flex-end" }}>
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List>
-            <DrawerNavItem icon={<HomeIcon />} text="Home" route="/" />
-            <DrawerNavItem icon={<CleaningServicesIcon />} text="Chores" route="/chores" />
-            <DrawerNavItem icon={<FoodBankIcon />} text="Pantry Inventory" route="/pantry-inventory" />
-          </List>
-        </Drawer>
-      ) : (
-        <Toolbar>
-          <IconButton onClick={toggleDrawer}>
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      )}
-    </Container>
+    <Drawer
+      variant="permanent"
+      anchor="left"
+      open={open}
+      sx={{
+        width: "10%",
+        flexShrink: 0,
+        "& .MuiDrawer-paper": {
+          width: "10%",
+          boxSizing: "border-box",
+        },
+        alignItems: "space-between",
+      }}
+    >
+      <Toolbar>
+        <Typography variant="h6">Home Manager</Typography>
+      </Toolbar>
+      <Divider />
+      <List>
+        <DrawerNavItem icon={<HomeIcon />} text="Home" route="/" />
+        <DrawerNavItem
+          icon={<CleaningServicesIcon />}
+          text="Chores"
+          route="/chores"
+        />
+        <DrawerNavItem
+          icon={<FoodBankIcon />}
+          text="Pantry Inventory"
+          route="/pantry-inventory"
+        />
+      </List>
+    </Drawer>
   );
 }

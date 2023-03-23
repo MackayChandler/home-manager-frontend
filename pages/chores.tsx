@@ -4,6 +4,6 @@ import { useState, useEffect } from 'react';
 
 export default function Chores() {
     return (
-        <Typography>Chores</Typography>
+        <Typography variant='h4'>Chore Tracker</Typography>
     )
 }

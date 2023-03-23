@@ -1,17 +1,14 @@
-import type { NextPage } from 'next'
-import { Stack, Toolbar, Typography } from '@mui/material'
+import type { NextPage } from "next";
+import { Container, Stack, Toolbar, Typography } from "@mui/material";
 
 const Home: NextPage = () => {
   return (
-    <Stack alignItems={"center"}>
-      <Toolbar
-        
-      >
-        
-      </Toolbar>
-      <Typography variant='h2'>Welcome to the home manager app</Typography>
-    </Stack>
-  )
-}
+    <Container>
+      <Typography variant="h2" textAlign={"center"}>
+        Welcome to the home manager app
+      </Typography>
+    </Container>
+  );
+};
 
-export default Home
+export default Home;

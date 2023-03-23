@@ -16,13 +16,13 @@ interface DrawerNavProps {
 
 export default function DrawerNavItem({ icon, text, route }: DrawerNavProps) {
   return (
-    <ListItem disablePadding>
-      <Link href={route}>
-        <ListItemButton>
+    <Link href={route}>
+      <ListItem disablePadding>
+        <ListItemButton sx={{ width: "auto" }}>
           <ListItemIcon>{icon}</ListItemIcon>
           <ListItemText primary={text} />
         </ListItemButton>
-      </Link>
-    </ListItem>
+      </ListItem>
+    </Link>
   );
 }
