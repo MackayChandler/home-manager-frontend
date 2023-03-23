@@ -11,6 +11,7 @@ import FoodBankIcon from "@mui/icons-material/FoodBank";
 import HomeIcon from "@mui/icons-material/Home";
 import * as React from "react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function BottomAppBar() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -21,12 +22,16 @@ export default function BottomAppBar() {
     <>
       <AppBar position="fixed" sx={{ top: "auto", bottom: 0 }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <IconButton>
-            <HomeIcon sx={{ color: "white" }} />
-          </IconButton>
+          <Link href="/">
+            <IconButton>
+              <HomeIcon sx={{ color: "white" }} />
+            </IconButton>
+          </Link>
+          <Link href="/chores">
           <IconButton>
             <CleaningServicesIcon sx={{ color: "white" }} />
           </IconButton>
+          </Link>
           <IconButton>
             <FoodBankIcon sx={{ color: "white" }} />
           </IconButton>

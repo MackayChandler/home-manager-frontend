@@ -42,6 +42,7 @@ export default function SideDrawer() {
         "& .MuiDrawer-paper": {
           width: "10%",
           boxSizing: "border-box",
+          background: "#C4DFE1",
         },
         alignItems: "space-between",
       }}
