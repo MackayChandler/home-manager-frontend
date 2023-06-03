@@ -13,7 +13,7 @@ import ChoreList from "./chore-list";
 export default function RoomListItem() {
   return (
     <Badge badgeContent={3} color="error" sx={{width: "100%"}}>
-      <Accordion sx={{width: "100%"}}>
+      <Accordion sx={{width: "100%", marginBottom: "3%"}}>
         <AccordionSummary
           sx={{ flexDirection: "row-reverse" }}
           expandIcon={<ExpandMoreIcon />}
