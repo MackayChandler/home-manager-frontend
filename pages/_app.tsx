@@ -14,6 +14,7 @@ import "../styles/globals.css";
 import Layout from "../components/shared/layout";
 import { ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
+import { SessionProvider } from "next-auth/react";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -32,17 +33,23 @@ const clientSideEmotionCache = createEmotionCache();
 const lightTheme = createTheme(lightThemeOptions);
 
 const MyApp: React.FunctionComponent<AppPropsWithLayout> = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const {
+    Component,
+    emotionCache = clientSideEmotionCache,
+    pageProps: { session, ...pageProps },
+  } = props;
   const getLayout =
     Component.getLayout ??
     ((page) => <Layout pageProps={pageProps}>{page}</Layout>);
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
-    </CacheProvider>
+    <SessionProvider session={session}>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          {getLayout(<Component {...pageProps} />)}
+        </ThemeProvider>
+      </CacheProvider>
+    </SessionProvider>
   );
 };
 

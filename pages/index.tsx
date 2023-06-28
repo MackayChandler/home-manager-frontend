@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
-import { Container, Stack, Toolbar, Typography } from "@mui/material";
+import { Button, Container, Stack, Toolbar, Typography } from "@mui/material";
+import { signIn } from "next-auth/react";
 
 const Home: NextPage = () => {
   return (
@@ -7,6 +8,7 @@ const Home: NextPage = () => {
       <Typography variant="h2" textAlign={"center"}>
         Welcome to the home manager app
       </Typography>
+      <Button onClick={() => signIn()}>Sign In</Button>
     </Container>
   );
 };

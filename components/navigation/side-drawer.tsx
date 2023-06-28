@@ -12,10 +12,10 @@ export default function SideDrawer() {
       variant="permanent"
       anchor="left"
       sx={{
-        width: "10%",
+        width: "15%",
         flexShrink: 0,
         "& .MuiDrawer-paper": {
-          width: "10%",
+          width: "15%",
           boxSizing: "border-box",
           background: "#C4DFE1",
         },
