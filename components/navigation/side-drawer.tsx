@@ -1,10 +1,23 @@
-import { Divider, Drawer, List, Toolbar, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import FoodBankIcon from "@mui/icons-material/FoodBank";
 import HomeIcon from "@mui/icons-material/Home";
 import DrawerNavItem from "./drawer-navigation";
 import Image from "next/image";
+import AccountLoginButton from "./account-login-button";
+
 
 export default function SideDrawer() {
   return (
@@ -23,7 +36,7 @@ export default function SideDrawer() {
       }}
     >
       <Toolbar>
-        <Image src={'/logo.png'} alt="logo" width={175} height={75}/>
+        <Image src={"/logo.png"} alt="logo" width={175} height={75} />
       </Toolbar>
       <Divider />
       <List>
@@ -39,6 +52,8 @@ export default function SideDrawer() {
           route="/pantry-inventory"
         />
       </List>
+
+      <AccountLoginButton />
     </Drawer>
   );
 }
