@@ -3,6 +3,9 @@ import {
   AccordionDetails,
   AccordionSummary,
   Badge,
+  Card,
+  CardContent,
+  Grid,
   Typography,
 } from "@mui/material";
 import * as React from "react";
@@ -12,18 +15,14 @@ import ChoreList from "./chore-list";
 
 export default function RoomListItem() {
   return (
+    <Grid item xs={12} sm={4}>
     <Badge badgeContent={3} color="error" sx={{width: "100%"}}>
-      <Accordion sx={{width: "100%", marginBottom: "3%"}}>
-        <AccordionSummary
-          sx={{ flexDirection: "row-reverse" }}
-          expandIcon={<ExpandMoreIcon />}
-        >
-          <Typography>Master Bedroom</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <ChoreList />
-        </AccordionDetails>
-      </Accordion>
+      <Card>
+        <CardContent>
+          <Typography>Test</Typography>
+        </CardContent>
+      </Card>
     </Badge>
+    </Grid>
   );
 }
