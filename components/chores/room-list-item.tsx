@@ -3,8 +3,11 @@ import {
   AccordionDetails,
   AccordionSummary,
   Badge,
+  Button,
   Card,
+  CardActions,
   CardContent,
+  CardHeader,
   Grid,
   Typography,
 } from "@mui/material";
@@ -15,14 +18,19 @@ import ChoreList from "./chore-list";
 
 export default function RoomListItem() {
   return (
-    <Grid item xs={12} sm={4}>
-    <Badge badgeContent={3} color="error" sx={{width: "100%"}}>
-      <Card>
-        <CardContent>
-          <Typography>Test</Typography>
-        </CardContent>
-      </Card>
-    </Badge>
+    <Grid
+      item
+      xs={12}
+      sm={4}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Badge badgeContent={3} color="error">
+        <Card>
+          <CardHeader title="Test"></CardHeader>
+          <CardActions>
+            <Button>View Chores</Button>
+          </CardActions>
+        </Card>
+      </Badge>
     </Grid>
   );
 }

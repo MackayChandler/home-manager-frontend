@@ -15,7 +15,7 @@ export default function Layout({ children }: any) {
 
   return (
     <Grid container>
-      <Grid item xs={12} sm={2}>
+      <Grid item xs={12} sm={3}>
         {sm ? (
           <Toolbar sx={{ backgroundColor: "#27b7de", color: "black" }}>
             <Image src={'/logo.png'} alt="logo" width={200} height={75}/>
@@ -24,7 +24,7 @@ export default function Layout({ children }: any) {
           <SideDrawer />
         )}
       </Grid>
-      <Grid item xs={12} sm={10}>
+      <Grid item xs={12} sm={9}>
         {children}
       </Grid>
       {sm && (

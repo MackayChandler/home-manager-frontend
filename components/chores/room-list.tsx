@@ -4,7 +4,7 @@ import RoomListItem from './room-list-item';
 
 export default function RoomList() {
     return (
-        <Grid container>
+        <Grid container spacing={2} sx={{marginTop: "5%"}}>
             <RoomListItem/>
             <RoomListItem/>
             <RoomListItem/>
