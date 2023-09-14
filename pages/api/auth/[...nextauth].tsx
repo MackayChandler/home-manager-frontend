@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import NextAuth from "next-auth";
+import NextAuth, { Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -14,7 +14,7 @@ export default NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const res = await fetch("http://localhost:7143/auth/login", {
+        const res = await fetch("https://localhost:7143/auth/signIn", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -33,7 +33,20 @@ export default NextAuth({
 
     // ...add more providers here
   ],
+  callbacks: {
+    async session({session, token}) {
+      session.user = token.user as Session['user'];
+      return session;
+    },
+    async jwt({token, user}) {
+      if (user) {
+        token.user = user;
+      }
+      return token;
+    }
+  },
   pages: {
     signIn: '/auth/signin'
-  }
+  },
+
 });

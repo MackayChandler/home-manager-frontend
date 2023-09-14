@@ -44,12 +44,12 @@ export default function SignIn() {
               name="password"
               type="password"
               label="Password"
-              value={username}
+              value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
-            <Button variant="outlined" type="submit">
+            <Button variant="outlined" type="submit" onClick={onSubmit}>
               Sign In
             </Button>
           </Stack>

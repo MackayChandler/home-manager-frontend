@@ -9,6 +9,27 @@
  * ---------------------------------------------------------------
  */
 
+export interface AuthDTO {
+  username?: string | null;
+  password?: string | null;
+}
+
+export interface Home {
+  /** @format int32 */
+  id?: number;
+  uniqueId?: string | null;
+  name?: string | null;
+}
+
+export interface RoomDTO {
+  /** @format int32 */
+  id?: number;
+  name?: string | null;
+  /** @format int32 */
+  homeId?: number;
+  home?: Home;
+}
+
 export interface UserDTO {
   /** @format int32 */
   id?: number;

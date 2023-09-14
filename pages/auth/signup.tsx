@@ -10,6 +10,7 @@ import {
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { UserDTO } from "../../models/models";
+import { registerUser } from "../../services/services";
 
 const DEFAULT_USER: UserDTO = {
   username: "",
@@ -30,9 +31,13 @@ export default function SignUp() {
     }
   }, [newUser.password, password2]);
 
-  const registerUser = async () => {
-    if (newUser.username != "" && newUser.password != "" && !verifyError) {
-      console.log(newUser);
+  const submitUser = async () => {
+    try {
+      if (newUser.username != "" && newUser.password != "" && !verifyError) {
+        await registerUser(newUser);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -85,7 +90,7 @@ export default function SignUp() {
               variant="outlined"
               onClick={() => {
                 if (!verifyError) {
-                  registerUser();
+                  submitUser();
                 }
               }}>
               Register

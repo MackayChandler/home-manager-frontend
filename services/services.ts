@@ -1,7 +1,8 @@
 import axios from "axios"
+import { UserDTO } from "../models/models"
 
 export const APIUrl = (endpoint: string) => {
-    return `http://localhost:5000/${endpoint}`
+    return `https://localhost:7143/${endpoint}`
 }
 
 export const APIGet = async (endpoint: string) => {
@@ -29,3 +30,4 @@ export const APIDelete = async (endpoint: string) => {
 }
 
 export const getUserByEmail = async (email: string) => APIGet(`users/${email}`);
+export const registerUser = async (user: UserDTO) => APIPost(`auth/register`, user)
