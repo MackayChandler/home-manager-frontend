@@ -17,11 +17,21 @@ export default function AccountLoginButton() {
   return (
     <>
       {status === "unauthenticated" ? (
-        <Button onClick={() => signIn()} startIcon={<AccountCircleIcon />} variant="outlined">
+        <Button
+          onClick={() => signIn()}
+          startIcon={<AccountCircleIcon />}
+          variant="outlined"
+          sx={{borderRadius: "90px"}}
+          >
           Sign In
         </Button>
       ) : (
-        <Button onClick={() => signOut()} startIcon={<AccountCircleIcon />} variant="outlined">
+        <Button
+          onClick={() => signOut()}
+          startIcon={<AccountCircleIcon />}
+          variant="outlined"
+          sx={{borderRadius: "90px"}}
+          >
           Sign Out
         </Button>
       )}
