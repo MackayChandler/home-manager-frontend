@@ -15,6 +15,7 @@ import Layout from "../components/shared/layout";
 import { ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
 import { SessionProvider } from "next-auth/react";
+import { ConfirmProvider } from "material-ui-confirm";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -45,8 +46,10 @@ const MyApp: React.FunctionComponent<AppPropsWithLayout> = (props) => {
     <SessionProvider session={session}>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={lightTheme}>
-          <CssBaseline />
-          {getLayout(<Component {...pageProps} />)}
+          <ConfirmProvider>
+            <CssBaseline />
+            {getLayout(<Component {...pageProps} />)}
+          </ConfirmProvider>
         </ThemeProvider>
       </CacheProvider>
     </SessionProvider>

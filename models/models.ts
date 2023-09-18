@@ -19,6 +19,15 @@ export interface Home {
   id?: number;
   uniqueId?: string | null;
   name?: string | null;
+  notes?: string | null;
+}
+
+export interface HomeDTO {
+  /** @format int32 */
+  id?: number;
+  uniqueId?: string | null;
+  name?: string | null;
+  notes?: string | null;
 }
 
 export interface RoomDTO {

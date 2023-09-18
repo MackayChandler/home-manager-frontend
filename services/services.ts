@@ -1,5 +1,5 @@
 import axios from "axios"
-import { UserDTO } from "../models/models"
+import { HomeDTO, UserDTO } from "../models/models"
 
 export const APIUrl = (endpoint: string) => {
     return `https://localhost:7143/${endpoint}`
@@ -29,5 +29,9 @@ export const APIDelete = async (endpoint: string) => {
     return response.data
 }
 
-export const getUserByEmail = async (email: string) => APIGet(`users/${email}`);
-export const registerUser = async (user: UserDTO) => APIPost(`auth/register`, user)
+//Users
+export const registerUser = async (user: UserDTO) => APIPost(`auth/register`, user);
+
+//Homes
+export const postNewHome = async (home:HomeDTO, userId: number) => APIPost(`homes/${userId}`, home);
+export const deleteHome = async (uniqueId: string) => APIDelete(`homes/${uniqueId}`);

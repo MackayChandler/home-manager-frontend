@@ -1,6 +1,7 @@
 import { Add, Clear, Edit, ExpandMore } from "@mui/icons-material";
 import {
   Accordion,
+  AccordionDetails,
   AccordionSummary,
   Button,
   Card,
@@ -12,16 +13,43 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
+import { HomeDTO } from "../../models/models";
+import { deleteHome } from "../../services/services";
+import { useConfirm } from "material-ui-confirm";
 
-export default function HomeCard() {
+interface HomeCardProps {
+  home: HomeDTO;
+  mutate: () => {};
+}
+
+export default function HomeCard({ home, mutate }: HomeCardProps) {
+  //Confirmation dialog hook
+  const confirm = useConfirm();
+
+
+  //Sends a request to delete a home from the database
+  const removeHome = async () => {
+    try {
+      confirm({
+        description:
+          "Are you sure you want to delete this home? This will remove the home from all the members of the home.",
+      }).then(async () => {
+        await deleteHome(home.uniqueId ?? "");
+        mutate();
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <Card>
       <CardHeader
-        title="Home"
+        title={home.name}
         action={
           <>
             <Tooltip title={"Delete Home"}>
-              <IconButton>
+              <IconButton onClick={removeHome}>
                 <Clear />
               </IconButton>
             </Tooltip>
@@ -41,6 +69,10 @@ export default function HomeCard() {
           <AccordionSummary expandIcon={<ExpandMore />}>
             Members
           </AccordionSummary>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMore />}>Notes</AccordionSummary>
+          <AccordionDetails>{home.notes}</AccordionDetails>
         </Accordion>
       </CardContent>
     </Card>
