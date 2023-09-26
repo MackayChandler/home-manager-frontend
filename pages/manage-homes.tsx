@@ -4,13 +4,14 @@ import HomeCard from "../components/home-manager/home-card";
 import { Add } from "@mui/icons-material";
 import { useHomesByUser } from "../services/hooks";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeDialog from "../components/home-manager/home-dialog";
 
 export default function HomeManager() {
   const { data: session } = useSession();
   const { homes, isLoading, mutate } = useHomesByUser(session?.user.id);
   const [open, setOpen] = useState(false);
+
 
   return (
     <Container>
