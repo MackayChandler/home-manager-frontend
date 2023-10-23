@@ -67,8 +67,11 @@ export default function HomeCard({ home, mutate }: HomeCardProps) {
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMore />}>Rooms</AccordionSummary>
           <AccordionDetails>
-            <Button startIcon={<Add/>}>Add Room</Button>
-            <RoomList rooms={home.rooms ?? []} />
+            <RoomList
+              rooms={home.rooms ?? []}
+              homeId={home.id ?? 0}
+              refresh={mutate}
+            />
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -76,7 +79,7 @@ export default function HomeCard({ home, mutate }: HomeCardProps) {
             Members
           </AccordionSummary>
           <AccordionDetails>
-            <Button startIcon={<Add/>}>Add Home Member</Button>
+            <Button startIcon={<Add />}>Add Home Member</Button>
             <MemberList members={home.members ?? []} />
           </AccordionDetails>
         </Accordion>

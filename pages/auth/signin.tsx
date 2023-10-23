@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function SignIn() {
@@ -52,6 +53,9 @@ export default function SignIn() {
             <Button variant="outlined" type="submit" onClick={onSubmit}>
               Sign In
             </Button>
+            <Link href={"/auth/signup"} style={{width: "100%"}}>
+              <Button variant="outlined" fullWidth>Create an account</Button>
+            </Link>
           </Stack>
         </CardContent>
       </Card>
