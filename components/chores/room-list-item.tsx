@@ -15,8 +15,13 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ChoreList from "./chore-list";
+import { RoomDTO } from "../../models/models";
 
-export default function RoomListItem() {
+interface RoomItemProps {
+  room: RoomDTO
+}
+
+export default function RoomListItem({room}:RoomItemProps) {
   return (
     <Grid
       item
@@ -25,7 +30,7 @@ export default function RoomListItem() {
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
       <Badge badgeContent={3} color="error">
         <Card>
-          <CardHeader title="Test"></CardHeader>
+          <CardHeader title={room.name}></CardHeader>
           <CardActions>
             <Button>View Chores</Button>
           </CardActions>

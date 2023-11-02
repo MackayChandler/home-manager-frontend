@@ -39,3 +39,4 @@ export const deleteHome = async (uniqueId: string) => APIDelete(`homes/${uniqueI
 //Rooms
 export const postNewRoom = async (room: RoomDTO) => APIPost(`rooms`, room);
 export const putRoom = async (room: RoomDTO) => APIPut(`rooms/${room.id}`, room);
+export const deleteRoom = async (id: number) => APIDelete(`rooms/${id}`);
