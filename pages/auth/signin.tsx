@@ -27,7 +27,7 @@ export default function SignIn() {
   return (
     <Container>
       <Card>
-        <CardHeader title="Sign In"></CardHeader>
+        <CardHeader title="Sign In"/>
         <CardContent>
           <Stack spacing={2}>
             <TextField
@@ -53,8 +53,10 @@ export default function SignIn() {
             <Button variant="outlined" type="submit" onClick={onSubmit}>
               Sign In
             </Button>
-            <Link href={"/auth/signup"} style={{width: "100%"}}>
-              <Button variant="outlined" fullWidth>Create an account</Button>
+            <Link href={"/auth/signup"} style={{ width: "100%" }}>
+              <Button variant="outlined" fullWidth>
+                Create an account
+              </Button>
             </Link>
           </Stack>
         </CardContent>

@@ -17,9 +17,10 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import { RoomDTO } from "../../models/models";
-import { Edit, Clear, Add } from "@mui/icons-material";
+import { Edit, Clear, Add, Check } from "@mui/icons-material";
 import { useState } from "react";
 import { postNewRoom } from "../../services/services";
+import RoomDialog from "./room-dialog";
 
 interface RoomListProps {
   rooms: RoomDTO[];
@@ -30,16 +31,20 @@ interface RoomListProps {
 export default function RoomList({ rooms, refresh, homeId }: RoomListProps) {
   const [editContent, setEditContent] = useState(false);
   const [newRoom, setNewRoom] = useState<RoomDTO>({});
+  const [editRoomField, setEditRoomField] = useState(false);
+  const [selRoom, setSelRoom] = useState<RoomDTO>({});
 
   const submitRoom = async () => {
     try {
-      setNewRoom({...newRoom, homeId: homeId})
+      setNewRoom({ ...newRoom, homeId: homeId });
       await postNewRoom(newRoom);
       setEditContent(false);
       setNewRoom({});
       refresh();
     } catch (e) {}
   };
+
+  
 
   return (
     <>
@@ -61,19 +66,24 @@ export default function RoomList({ rooms, refresh, homeId }: RoomListProps) {
           <TableBody>
             {rooms.map((room) => (
               <TableRow key={room.id}>
-                <TableCell>
-                  <Typography>
-                    {room.name}
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <IconButton color="primary">
-                    <Edit />
-                  </IconButton>
-                  <IconButton color="error">
-                    <Clear />
-                  </IconButton>
-                </TableCell>
+                <>
+                  <TableCell>
+                    <Typography>{room.name}</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <IconButton
+                      color="primary"
+                      onClick={() => {
+                        setSelRoom(room);
+                        setEditRoomField(true);
+                      }}>
+                      <Edit />
+                    </IconButton>
+                    <IconButton color="error">
+                      <Clear />
+                    </IconButton>
+                  </TableCell>
+                </>
               </TableRow>
             ))}
             {editContent && (
@@ -82,7 +92,7 @@ export default function RoomList({ rooms, refresh, homeId }: RoomListProps) {
                   <TextField
                     defaultValue={newRoom.name}
                     onChange={(e) => {
-                      setNewRoom({...newRoom, name: e.target.value});
+                      setNewRoom({ ...newRoom, name: e.target.value });
                     }}
                     value={newRoom.name}
                   />
@@ -111,6 +121,15 @@ export default function RoomList({ rooms, refresh, homeId }: RoomListProps) {
           </TableBody>
         </Table>
       </TableContainer>
+      <RoomDialog
+        open={editRoomField}
+        onClose={() => {
+          refresh();
+          setEditRoomField(false);
+        }}
+        room={selRoom}
+        roomState={setSelRoom}
+      />
     </>
   );
 }
